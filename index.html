@@ -3,544 +3,370 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lior Avram — Automation & Web Development</title>
-  <meta name="description" content="I build tools that save businesses time and money. Automation, web apps, and digital marketing for construction, restoration, and service businesses." />
-  <meta property="og:title" content="Lior Avram — Automation & Web Development" />
-  <meta property="og:description" content="Automation, web apps, and digital marketing for construction, restoration, and service businesses. Based in Fort Lauderdale." />
+  <title>Lior Avram | AI Operations &amp; Automation</title>
+  <meta name="description" content="AI and automation for operations-heavy businesses in construction, restoration and property management, built by someone who ran them. Case studies: an AI support system, receipt automation that saves 10-15 hours a week, and a subcontractor tracker for a 900+ unit portfolio." />
+  <link rel="canonical" href="https://lior-avram-portfolio.netlify.app/" />
+  <meta property="og:title" content="Lior Avram | AI Operations &amp; Automation" />
+  <meta property="og:description" content="AI and automation for operations-heavy businesses, built by someone who ran one. Fort Lauderdale, FL." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lior-avram-portfolio.netlify.app/" />
+  <meta name="theme-color" content="#09090b" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
   <style>
+    :root {
+      --bg: #09090b;
+      --card: #111113;
+      --card-open: #141417;
+      --line: #1c1c1f;
+      --line-2: #27272a;
+      --text: #e4e4e7;
+      --head: #fafafa;
+      --muted: #a1a1aa;
+      --dim: #8b8b94;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --violet: #a78bfa;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #09090b; color: #e4e4e7; font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; }
-    ::selection { background: #3b82f6; color: #fff; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-up { animation: fadeUp 0.4s ease-out both; }
-    .fade-up-1 { animation-delay: 0.05s; }
-    .fade-up-2 { animation-delay: 0.1s; }
-    .fade-up-3 { animation-delay: 0.15s; }
-    .fade-up-4 { animation-delay: 0.2s; }
-    .fade-up-5 { animation-delay: 0.25s; }
-    .fade-up-6 { animation-delay: 0.3s; }
-    .fade-up-7 { animation-delay: 0.35s; }
-    .fade-up-8 { animation-delay: 0.4s; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--blue); color: #fff; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .fade { animation: fadeUp 0.4s ease-out both; }
+    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.1s; } .d3 { animation-delay: 0.15s; }
+    .d4 { animation-delay: 0.2s; } .d5 { animation-delay: 0.25s; }
+    @media (prefers-reduced-motion: reduce) { .fade { animation: none; } html { scroll-behavior: auto; } }
+
+    .wrap { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
+
+    /* Labels */
+    .eyebrow, .label {
+      font-family: var(--mono); font-weight: 700; text-transform: uppercase;
+    }
+    .eyebrow { font-size: 11px; letter-spacing: 5px; color: var(--blue); margin-bottom: 12px; }
+    .label { font-size: 11px; letter-spacing: 3px; color: var(--blue); margin: 52px 0 16px; }
+
+    /* Hero */
+    h1 { font-size: 34px; font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; color: var(--head); margin-bottom: 16px; }
+    .lede { font-size: 16px; color: var(--muted); margin-bottom: 14px; }
+    .role { font-size: 12px; color: var(--dim); font-family: var(--mono); margin-bottom: 24px; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 8px;
+      background: var(--line-2); color: var(--head); transition: opacity 0.2s, background 0.2s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn-li { background: #0a66c2; color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line-2); }
+
+    /* Credentials */
+    .creds { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 36px; }
+    .cred { background: #0e0e10; padding: 16px; }
+    .cred-n { font-size: 22px; font-weight: 700; color: var(--head); line-height: 1.2; margin-bottom: 4px; }
+    .cred-n.small { font-size: 17px; padding-top: 3px; padding-bottom: 2px; }
+    .cred-v { font-size: 13px; color: var(--muted); line-height: 1.45; }
+
+    /* Case studies */
+    .case {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      margin-bottom: 14px; transition: background 0.2s, border-color 0.2s;
+    }
+    .case[open] { background: var(--card-open); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+    .case summary { list-style: none; cursor: pointer; padding: 20px; border-radius: 12px; }
+    .case summary::-webkit-details-marker { display: none; }
+    .case-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .tag {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px; margin-bottom: 8px;
+      color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+    .case h3 { font-size: 18px; font-weight: 700; color: var(--head); line-height: 1.3; margin-bottom: 4px; }
+    .case-sub { font-size: 13px; color: var(--dim); }
+    .plus { color: var(--dim); font-size: 22px; line-height: 1; transition: transform 0.2s; flex-shrink: 0; }
+    .case[open] .plus { transform: rotate(45deg); }
+    .metrics { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+    .metrics li { background: #0b0b0d; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .metrics strong { display: block; font-size: 17px; color: var(--accent); font-weight: 700; margin-bottom: 2px; white-space: nowrap; }
+    .more { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--accent); }
+    .case[open] .more { display: none; }
+
+    .case-body { border-top: 1px solid var(--line-2); margin: 0 20px; padding: 18px 0 22px; }
+    .case-body h4 { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin: 18px 0 6px; }
+    .case-body h4:first-child { margin-top: 0; }
+    .case-body h4.ok { color: var(--green); }
+    .case-body p { font-size: 15px; color: #c4c4cc; margin-bottom: 10px; }
+    .flow { list-style: none; counter-reset: step; margin: 10px 0 14px 10px; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); padding-left: 20px; }
+    .flow li { counter-increment: step; position: relative; font-size: 14px; color: var(--muted); padding: 4px 0; }
+    .flow li::before {
+      content: counter(step); position: absolute; left: -31px; top: 6px; width: 20px; height: 20px; border-radius: 50%;
+      background: var(--bg); border: 1px solid var(--accent); color: var(--accent);
+      font: 700 10px/18px var(--mono); text-align: center;
+    }
+    .nw { white-space: nowrap; }
+    .results { list-style: none; }
+    .results li { display: flex; gap: 10px; font-size: 15px; color: #d4d4d8; margin-bottom: 6px; line-height: 1.5; }
+    .results li::before { content: "\2192"; color: var(--green); font-weight: 700; }
+    .stack { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .stack li { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 5px; background: var(--line-2); color: var(--muted); }
+    figure { margin: 16px 0 4px; }
+    figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line-2); }
+    figcaption { font-size: 12px; color: var(--dim); margin-top: 6px; }
+
+    /* How I work */
+    .steps { display: grid; gap: 10px; }
+    .step { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+    .step h3 { font-size: 16px; color: var(--head); font-weight: 700; margin-bottom: 4px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* About */
+    .about p { font-size: 15px; color: #d4d4d8; line-height: 1.75; margin-bottom: 16px; }
+    .chips-title { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin: 22px 0 10px; font-weight: 700; }
+    .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips li { font-size: 12px; padding: 5px 12px; border-radius: 6px; background: #18181b; color: var(--muted); border: 1px solid var(--line-2); }
+    .chips.mono li { font-family: var(--mono); }
+    .chips.green li { background: #10b98112; color: #6ee7b7; border-color: #10b98133; }
+
+    /* Contact */
+    .cta { margin-top: 52px; background: #0c1425; border: 1px solid #1e3a5f; border-radius: 12px; padding: 28px 22px; text-align: center; }
+    .cta h2 { font-size: 20px; font-weight: 700; color: var(--head); line-height: 1.3; margin-bottom: 8px; }
+    .cta p { font-size: 15px; color: #93c5fd; margin-bottom: 20px; }
+    .cta .actions { justify-content: center; }
+
+    footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); text-align: center; font-size: 12px; color: #6b6b74; }
+
+    @media (max-width: 560px) {
+      .wrap { padding-top: 36px; }
+      h1 { font-size: 28px; }
+      .metrics { grid-template-columns: 1fr; }
+      .case summary { padding: 18px 16px; }
+      .case-body { margin: 0 16px; }
+      .cred { padding: 14px; }
+      .cred-n { font-size: 19px; }
+    }
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+  <main class="wrap">
 
-    const PROJECTS = [
-      {
-        title: "Automated Purchase Tracking System",
-        client: "Construction Client",
-        tag: "Automation",
-        tagColor: "#10b981",
-        status: "completed",
-        desc: "Built a system that logs into Home Depot weekly, pulls all purchases, matches line items to jobs using a three-tier matching algorithm, and generates organized PDF receipts and Excel reports. Engineered a workaround for bot protection on order detail pages.",
-        problem: "Client was manually logging into Home Depot every week, scrolling through purchase history, matching receipts to jobs, and organizing everything into spreadsheets. Hours of work, frequent mistakes.",
-        results: [
-          "Hours of weekly manual bookkeeping reduced to a single click",
-          "Zero missed receipts or mismatched job assignments",
-          "Organized weekly folders with PDF receipts and Excel reports ready for bookkeeper"
-        ],
-        tech: ["Node.js", "Playwright", "ExcelJS", "HTML-to-PDF"],
-        icon: "🧾",
-      },
-      {
-        title: "Interactive Sailing Trip Planner",
-        client: "Personal Project",
-        tag: "Web App",
-        tagColor: "#3b82f6",
-        status: "completed",
-        desc: "Full-stack interactive trip planning app for a 7-day bareboat sailing charter along Croatia's Dalmatian coast. Consolidated route mapping, day-by-day itineraries, packing checklists, and budget tracking into one shareable URL.",
-        problem: "Planning a sailing charter involves coordinating routes, distances, weather, budgets, packing, and port logistics across dozens of browser tabs and spreadsheets. Nothing shareable with crew.",
-        results: [
-          "Replaced 6+ browser tabs and 2 spreadsheets with a single URL",
-          "Interactive SVG route map with clickable navigation between stops",
-          "Persistent packing checklist, budget tracker, and editable notes across sessions"
-        ],
-        tech: ["HTML/CSS/JS", "Firebase", "Netlify", "Google OAuth"],
-        icon: "⛵",
-      },
-      {
-        title: "Property Website Redesign",
-        client: "Construction Client",
-        tag: "Web Design",
-        tagColor: "#f59e0b",
-        status: "in-progress",
-        desc: "Building a modern, SEO-optimized website for one of the client's rental properties. Mobile-first design with booking integration and professional photography showcase.",
-        icon: "🏠",
-      },
-      {
-        title: "Multi-Property Digital Marketing",
-        client: "Construction Client",
-        tag: "Marketing",
-        tagColor: "#ec4899",
-        status: "in-progress",
-        desc: "Managing SEO, Google Business profiles, Google PPC campaigns, and social media marketing and advertising across 3 properties. Full-funnel strategy from search visibility to paid acquisition.",
-        icon: "📈",
-      },
-      {
-        title: "Contractor Daily Reporting Dashboard",
-        client: "Construction Client",
-        tag: "SaaS Tool",
-        tagColor: "#8b5cf6",
-        status: "in-progress",
-        desc: "Building a custom application where subcontractors report daily work completed, managers receive automatic updates, and a real-time dashboard tracks progress across all active jobs.",
-        icon: "📋",
-      },
-    ];
+    <header>
+      <p class="eyebrow fade">Lior Avram</p>
+      <h1 class="fade d1">AI and automation for operations-heavy businesses, built by someone who ran one.</h1>
+      <p class="lede fade d2">Support inboxes answered by hand. Subcontractors tracked on paper. Receipts matched to jobs one line at a time. I lived those problems as an owner in construction and restoration. Now I build the AI systems and automations that take them off a team's plate.</p>
+      <p class="role fade d2">Director of Digital Operations &amp; AI (contract), Everest Realty &middot; Fort Lauderdale, FL</p>
+      <div class="actions fade d3">
+        <a class="btn btn-li" href="https://www.linkedin.com/in/lioravram" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:lioravram08@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="#work">See the work</a>
+      </div>
 
-    const SERVICES = [
-      {
-        name: "Custom Automation",
-        desc: "Turn repetitive manual work into one-click systems. Data entry, report generation, file organization, notifications.",
-        icon: "⚡",
-      },
-      {
-        name: "Website Design & Development",
-        desc: "Modern, mobile-first websites built for speed and SEO. From single-page sites to full web applications.",
-        icon: "🌐",
-      },
-      {
-        name: "Digital Marketing",
-        desc: "SEO, Google Business, PPC, and social media management. Full-funnel strategy from visibility to conversion.",
-        icon: "📈",
-      },
-      {
-        name: "Custom Business Tools",
-        desc: "Dashboards, trackers, reporting systems, and internal tools built to solve your specific workflow problems.",
-        icon: "🛠️",
-      },
-    ];
-
-    function ProjectCard({ project, index }) {
-      const [isOpen, setIsOpen] = useState(false);
-      const isCompleted = project.status === "completed";
-
-      return (
-        <div
-          className={`fade-up fade-up-${index + 1}`}
-          onClick={() => setIsOpen(!isOpen)}
-          style={{
-            background: isOpen ? "#18181b" : "#111113",
-            border: `1px solid ${isOpen ? project.tagColor + "44" : "#1c1c1f"}`,
-            borderRadius: 12,
-            padding: "18px 20px",
-            marginBottom: 12,
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div style={{ display: "flex", gap: 14, alignItems: "flex-start", flex: 1 }}>
-              <div style={{ fontSize: 30, lineHeight: 1 }}>{project.icon}</div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 16, color: "#fafafa", marginBottom: 6, lineHeight: 1.3 }}>
-                  {project.title}
-                </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                  <span style={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                    padding: "3px 8px",
-                    borderRadius: 4,
-                    background: project.tagColor + "18",
-                    color: project.tagColor,
-                    letterSpacing: 0.5,
-                    textTransform: "uppercase",
-                  }}>
-                    {project.tag}
-                  </span>
-                  {!isCompleted && (
-                    <span style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 5,
-                      fontSize: 10,
-                      color: "#f59e0b",
-                      fontWeight: 600,
-                    }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#f59e0b" }} />
-                      In Progress
-                    </span>
-                  )}
-                  <span style={{ fontSize: 12, color: "#52525b" }}>{project.client}</span>
-                </div>
-              </div>
-            </div>
-            <div style={{
-              color: "#52525b",
-              fontSize: 20,
-              transform: isOpen ? "rotate(45deg)" : "none",
-              transition: "transform 0.2s",
-              flexShrink: 0,
-              marginLeft: 8,
-            }}>+</div>
-          </div>
-
-          {isOpen && (
-            <div style={{ marginTop: 18, paddingTop: 16, borderTop: "1px solid #27272a" }}>
-              {project.problem && (
-                <div style={{ marginBottom: 14 }}>
-                  <div style={{
-                    fontSize: 10, letterSpacing: 2, color: "#71717a",
-                    textTransform: "uppercase", marginBottom: 6, fontWeight: 700,
-                    fontFamily: "'JetBrains Mono', monospace",
-                  }}>
-                    The Problem
-                  </div>
-                  <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.65, margin: 0 }}>
-                    {project.problem}
-                  </p>
-                </div>
-              )}
-
-              <div style={{ marginBottom: 14 }}>
-                <div style={{
-                  fontSize: 10, letterSpacing: 2, color: "#71717a",
-                  textTransform: "uppercase", marginBottom: 6, fontWeight: 700,
-                  fontFamily: "'JetBrains Mono', monospace",
-                }}>
-                  {isCompleted ? "What I Built" : "What I'm Building"}
-                </div>
-                <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.65, margin: 0 }}>
-                  {project.desc}
-                </p>
-              </div>
-
-              {project.results && (
-                <div style={{ marginBottom: 14 }}>
-                  <div style={{
-                    fontSize: 10, letterSpacing: 2, color: "#10b981",
-                    textTransform: "uppercase", marginBottom: 8, fontWeight: 700,
-                    fontFamily: "'JetBrains Mono', monospace",
-                  }}>
-                    Results
-                  </div>
-                  {project.results.map((r, j) => (
-                    <div key={j} style={{ display: "flex", gap: 10, marginBottom: 6 }}>
-                      <span style={{ color: "#10b981", fontWeight: 700, fontSize: 14 }}>→</span>
-                      <span style={{ fontSize: 14, color: "#d4d4d8", lineHeight: 1.5 }}>{r}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {project.tech && (
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
-                  {project.tech.map((t, j) => (
-                    <span key={j} style={{
-                      fontSize: 11,
-                      padding: "4px 10px",
-                      borderRadius: 5,
-                      background: "#27272a",
-                      color: "#a1a1aa",
-                      fontFamily: "'JetBrains Mono', monospace",
-                    }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {project.url && (
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener"
-                  onClick={(e) => e.stopPropagation()}
-                  style={{
-                    display: "inline-block",
-                    marginTop: 14,
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: "#3b82f6",
-                    padding: "6px 14px",
-                    border: "1px solid #3b82f633",
-                    borderRadius: 6,
-                    background: "#3b82f60d",
-                  }}
-                >
-                  View live demo →
-                </a>
-              )}
-            </div>
-          )}
+      <div class="creds fade d4" aria-label="Background">
+        <div class="cred">
+          <div class="cred-n small">Anthropic certified</div>
+          <div class="cred-v">Claude Code in Action and MCP Architecture, 2026</div>
         </div>
-      );
-    }
-
-    function App() {
-      const [activeTab, setActiveTab] = useState("projects");
-
-      const completed = PROJECTS.filter(p => p.status === "completed");
-      const inProgress = PROJECTS.filter(p => p.status === "in-progress");
-
-      return (
-        <div style={{ maxWidth: 640, margin: "0 auto", padding: "40px 20px 80px" }}>
-
-          {/* Header */}
-          <div className="fade-up" style={{ marginBottom: 12 }}>
-            <div style={{
-              fontSize: 11, letterSpacing: 5, color: "#3b82f6",
-              textTransform: "uppercase", marginBottom: 10, fontWeight: 700,
-              fontFamily: "'JetBrains Mono', monospace",
-            }}>
-              Lior Avram
-            </div>
-            <h1 style={{
-              fontSize: 32, fontWeight: 800, margin: "0 0 10px",
-              color: "#fafafa", lineHeight: 1.15, letterSpacing: -0.5,
-            }}>
-              I build tools that save businesses time and money.
-            </h1>
-            <p style={{
-              fontSize: 15, color: "#71717a", margin: "0 0 24px", lineHeight: 1.6,
-            }}>
-              Automation, web apps, and digital marketing for construction, restoration, and service businesses. Based in Fort Lauderdale, FL.
-            </p>
-          </div>
-
-          {/* Contact buttons */}
-          <div className="fade-up fade-up-1" style={{ display: "flex", gap: 8, marginBottom: 36, flexWrap: "wrap" }}>
-            <a href="https://linkedin.com/in/lioravram" target="_blank" rel="noopener" style={{
-              fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 8,
-              background: "#0a66c2", color: "#fff", display: "inline-block",
-              transition: "opacity 0.2s",
-            }}>
-              LinkedIn
-            </a>
-            <a href="mailto:lioravram08@gmail.com" style={{
-              fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 8,
-              background: "#27272a", color: "#fafafa", display: "inline-block",
-              transition: "opacity 0.2s",
-            }}>
-              Email Me
-            </a>
-            <a href="https://github.com/lioravram" target="_blank" rel="noopener" style={{
-              fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 8,
-              background: "#27272a", color: "#fafafa", display: "inline-block",
-              transition: "opacity 0.2s",
-            }}>
-              GitHub
-            </a>
-          </div>
-
-          {/* Tab navigation */}
-          <div style={{ display: "flex", gap: 0, marginBottom: 28, borderBottom: "1px solid #27272a" }}>
-            {[
-              { id: "projects", label: "Projects" },
-              { id: "services", label: "Services" },
-              { id: "about", label: "About" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                style={{
-                  padding: "12px 20px", fontSize: 14,
-                  fontWeight: activeTab === tab.id ? 700 : 400,
-                  color: activeTab === tab.id ? "#fafafa" : "#71717a",
-                  background: "none", border: "none",
-                  borderBottom: activeTab === tab.id ? "2px solid #3b82f6" : "2px solid transparent",
-                  cursor: "pointer", fontFamily: "inherit", transition: "all 0.2s",
-                }}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* PROJECTS TAB */}
-          {activeTab === "projects" && (
-            <div>
-              <div style={{
-                fontSize: 10, letterSpacing: 3, color: "#10b981",
-                textTransform: "uppercase", fontWeight: 700, marginBottom: 14,
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>
-                Completed
-              </div>
-              {completed.map((p, i) => <ProjectCard key={i} project={p} index={i} />)}
-
-              <div style={{
-                fontSize: 10, letterSpacing: 3, color: "#f59e0b",
-                textTransform: "uppercase", fontWeight: 700, marginTop: 32, marginBottom: 14,
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>
-                In Progress
-              </div>
-              {inProgress.map((p, i) => <ProjectCard key={i} project={p} index={i + completed.length} />)}
-
-              {/* Stats */}
-              <div style={{
-                display: "flex", gap: 1, marginTop: 36,
-                borderRadius: 12, overflow: "hidden",
-              }}>
-                {[
-                  { label: "Projects", value: "5", color: "#3b82f6" },
-                  { label: "Industries", value: "Construction · Marine · Real Estate", color: "#10b981", wide: true },
-                ].map((stat, i) => (
-                  <div key={i} style={{
-                    flex: stat.wide ? 2 : 1, background: "#141416",
-                    padding: "16px 14px", textAlign: "center",
-                  }}>
-                    <div style={{
-                      fontSize: 10, color: "#52525b", letterSpacing: 1,
-                      textTransform: "uppercase", marginBottom: 6,
-                      fontFamily: "'JetBrains Mono', monospace",
-                    }}>
-                      {stat.label}
-                    </div>
-                    <div style={{ fontSize: stat.wide ? 12 : 24, fontWeight: 700, color: stat.color }}>
-                      {stat.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* SERVICES TAB */}
-          {activeTab === "services" && (
-            <div>
-              <p style={{
-                fontSize: 15, color: "#a1a1aa", lineHeight: 1.65,
-                marginBottom: 28,
-              }}>
-                I help construction, restoration, and service businesses eliminate busywork and grow online. Here's what I offer:
-              </p>
-
-              {SERVICES.map((svc, i) => (
-                <div
-                  key={i}
-                  className={`fade-up fade-up-${i + 1}`}
-                  style={{
-                    background: "#111113",
-                    border: "1px solid #1c1c1f",
-                    borderRadius: 12,
-                    padding: "20px",
-                    marginBottom: 12,
-                  }}
-                >
-                  <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                    <div style={{ fontSize: 28, lineHeight: 1 }}>{svc.icon}</div>
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: 16, color: "#fafafa", marginBottom: 6 }}>
-                        {svc.name}
-                      </div>
-                      <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.6, margin: 0 }}>
-                        {svc.desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {/* CTA */}
-              <div style={{
-                marginTop: 28, background: "#0c1425",
-                border: "1px solid #1e3a5f", borderRadius: 12,
-                padding: "24px 20px", textAlign: "center",
-              }}>
-                <div style={{ fontSize: 18, fontWeight: 700, color: "#fafafa", marginBottom: 8 }}>
-                  Have a project in mind?
-                </div>
-                <p style={{ fontSize: 14, color: "#93c5fd", marginBottom: 18, lineHeight: 1.5 }}>
-                  Tell me what's eating your time. I'll tell you if I can fix it.
-                </p>
-                <a href="mailto:lioravram08@gmail.com" style={{
-                  display: "inline-block", padding: "10px 28px",
-                  background: "#3b82f6", color: "#fff", borderRadius: 8,
-                  fontSize: 14, fontWeight: 700,
-                }}>
-                  Get in Touch
-                </a>
-              </div>
-            </div>
-          )}
-
-          {/* ABOUT TAB */}
-          {activeTab === "about" && (
-            <div className="fade-up">
-              <p style={{ fontSize: 15, color: "#d4d4d8", lineHeight: 1.75, marginBottom: 20 }}>
-                I'm Lior Avram. I've spent 7+ years building and running businesses in construction, restoration, real estate, and lending. I founded a restoration company that grew to over $1M in annual revenue, managed 90+ projects, directed field crews of 5 to 15, and raised over $1M in investor capital for a lending operation where I managed a $4M+ loan portfolio.
-              </p>
-              <p style={{ fontSize: 15, color: "#d4d4d8", lineHeight: 1.75, marginBottom: 20 }}>
-                Now I combine that hands-on industry experience with software development and AI to build tools that solve real operational problems. I've been in the field, dealt with the paperwork nightmares, and lived through the inefficiencies that most tech people only read about. When I build something for a construction or service business, it's because I've personally felt the pain it solves.
-              </p>
-              <p style={{ fontSize: 15, color: "#d4d4d8", lineHeight: 1.75, marginBottom: 28 }}>
-                I'm based in Fort Lauderdale, FL. I work with clients remotely and locally. If you're drowning in manual processes, spending hours on things that should take minutes, or know your online presence isn't where it should be, let's talk.
-              </p>
-
-              {/* Skills */}
-              <div style={{
-                fontSize: 10, letterSpacing: 3, color: "#3b82f6",
-                textTransform: "uppercase", fontWeight: 700, marginBottom: 12,
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>
-                Technical Skills
-              </div>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 28 }}>
-                {[
-                  "JavaScript", "Node.js", "React", "Firebase", "Netlify",
-                  "Playwright", "Python", "HTML/CSS", "SEO", "Google Ads",
-                  "ExcelJS", "AI/Claude", "Git", "REST APIs"
-                ].map((skill, i) => (
-                  <span key={i} style={{
-                    fontSize: 12, padding: "5px 12px", borderRadius: 6,
-                    background: "#18181b", color: "#a1a1aa", border: "1px solid #27272a",
-                    fontFamily: "'JetBrains Mono', monospace",
-                  }}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <div style={{
-                fontSize: 10, letterSpacing: 3, color: "#3b82f6",
-                textTransform: "uppercase", fontWeight: 700, marginBottom: 12,
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>
-                Industry Experience
-              </div>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {[
-                  "Construction", "Restoration", "Real Estate", "Marine/Yachting",
-                  "Lending/Fintech", "Property Management"
-                ].map((ind, i) => (
-                  <span key={i} style={{
-                    fontSize: 12, padding: "5px 12px", borderRadius: 6,
-                    background: "#10b98112", color: "#6ee7b7", border: "1px solid #10b98133",
-                  }}>
-                    {ind}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Footer */}
-          <div style={{
-            marginTop: 60, paddingTop: 24,
-            borderTop: "1px solid #1c1c1f", textAlign: "center",
-          }}>
-            <div style={{ fontSize: 12, color: "#3f3f46" }}>
-              © 2026 Lior Avram · Fort Lauderdale, FL
-            </div>
-          </div>
+        <div class="cred">
+          <div class="cred-n">$1M+ a year</div>
+          <div class="cred-v">Restoration company I founded: 90+ projects, field crews of <span class="nw">5-15</span></div>
         </div>
-      );
-    }
+        <div class="cred">
+          <div class="cred-n">$4M+ portfolio</div>
+          <div class="cred-v">Lending division I ran: 550 accounts, $2M+ raised</div>
+        </div>
+        <div class="cred">
+          <div class="cred-n">900+ units</div>
+          <div class="cred-v">Sole tech lead for a 3-property multifamily portfolio</div>
+        </div>
+      </div>
+    </header>
 
-    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-  </script>
+    <section id="work" aria-labelledby="work-title">
+      <h2 class="label" id="work-title">Selected work</h2>
+
+      <!-- 1. AI support system -->
+      <details class="case fade d1" style="--accent: var(--violet)" open>
+        <summary>
+          <div class="case-head">
+            <div>
+              <span class="tag">AI implementation</span>
+              <h3>AI support system for an international wellness brand</h3>
+              <p class="case-sub">Client project, customers in 40+ countries. Chosen over 2 other firms.</p>
+            </div>
+            <span class="plus" aria-hidden="true">+</span>
+          </div>
+          <ul class="metrics">
+            <li><strong>125K+</strong> past support emails turned into a knowledge base</li>
+            <li><strong>5 &rarr; 1</strong> channels in, one HubSpot record per customer</li>
+            <li><strong>$0.32 &rarr; $0.015</strong> AI cost per drafted reply</li>
+          </ul>
+          <span class="more">Read the case study</span>
+        </summary>
+        <div class="case-body">
+          <h4>The problem</h4>
+          <p>The brand sells in 40+ countries and was answering customers by hand across email, chat, SMS, WhatsApp and Instagram. The same questions came in every day, and the answers already existed, buried in 125K+ old support emails.</p>
+
+          <h4>What I built</h4>
+          <p>I distilled those 125K+ emails (5.4 GB) into about 1,950 curated question and answer pairs, the knowledge base Claude drafts from. n8n pulls every channel into a single HubSpot record. For support answers, Claude drafts the reply in the brand's voice and a team member reviews it before it goes out.</p>
+          <ol class="flow" aria-label="How a message moves through the system">
+            <li>A message arrives by email, chat, SMS, WhatsApp or Instagram</li>
+            <li>n8n routes it to the customer's HubSpot record</li>
+            <li>Claude drafts an answer from the 1,950-pair knowledge base</li>
+            <li>A team member reviews, edits and sends</li>
+          </ol>
+          <p>I also built the CRM side: 20+ custom HubSpot properties and a sales pipeline across a 2,000+ ticket environment, plus a Zoom link that tracks who registered versus who attended each event. Every new automation ran in shadow mode first, logging what it would have sent, before it was switched on.</p>
+
+          <h4 class="ok">Results</h4>
+          <ul class="results">
+            <li>One customer record across 5 channels instead of 5 separate inboxes</li>
+            <li>AI cost per drafted reply cut from $0.32 to about $0.015 with prompt caching</li>
+            <li>Event follow-ups go out by segment on their own: attendees, no-shows and upsell sequences</li>
+          </ul>
+          <ul class="stack" aria-label="Stack">
+            <li>Claude API</li><li>RAG</li><li>n8n</li><li>HubSpot Enterprise</li><li>WooCommerce</li><li>Zoom</li><li>Render</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- 2. Receipt automation -->
+      <details class="case fade d2" style="--accent: var(--green)">
+        <summary>
+          <div class="case-head">
+            <div>
+              <span class="tag">Automation</span>
+              <h3>Receipt automation that gives back <span class="nw">10-15</span> hours a week</h3>
+              <p class="case-sub">Everest Realty, property management and construction.</p>
+            </div>
+            <span class="plus" aria-hidden="true">+</span>
+          </div>
+          <ul class="metrics">
+            <li><strong><span class="nw">10-15</span> hrs</strong> of manual work removed every week</li>
+            <li><strong>5 months</strong> of backlog cleared</li>
+            <li><strong>To the penny</strong> reports match the supplier's receipts</li>
+          </ul>
+          <span class="more">Read the case study</span>
+        </summary>
+        <div class="case-body">
+          <h4>The problem</h4>
+          <p>Every week someone logged into the Home Depot business portal, scrolled through purchase history, matched each line item to a job and built spreadsheets for the bookkeeper. It took <span class="nw">10-15</span> hours a week, and the work had fallen 5 months behind.</p>
+
+          <h4>What I built</h4>
+          <p>A scheduled Playwright system that pulls new orders, matches every line item to the right job with a three-tier matching algorithm, and builds PDF receipts plus an Excel report with subtotals. Microsoft Graph files everything to OneDrive by week, ready for the bookkeeper.</p>
+          <p>When Home Depot quietly changed its export format, one order came out at $7,030.32 instead of the real $2,193.80. Nothing crashed, which is the dangerous part. I traced it, rebuilt every affected report, checked them to the penny against Home Depot's own receipts, and added a reconciliation check that flags any order whose line items don't add up to the receipt total.</p>
+
+          <h4 class="ok">Results</h4>
+          <ul class="results">
+            <li><span class="nw">10-15</span> hours of manual receipt work a week, gone</li>
+            <li>5-month backlog cleared</li>
+            <li>Reports match the supplier's receipts to the penny, with an alarm if they ever drift</li>
+          </ul>
+          <ul class="stack" aria-label="Stack">
+            <li>Node.js</li><li>Playwright</li><li>Microsoft Graph</li><li>ExcelJS</li><li>PDF generation</li><li>launchd</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- 3. Subcontractor tracker -->
+      <details class="case fade d3" style="--accent: var(--blue)">
+        <summary>
+          <div class="case-head">
+            <div>
+              <span class="tag">Internal tool</span>
+              <h3>Subcontractor tracking app for a 900+ unit portfolio</h3>
+              <p class="case-sub">Everest Realty. 3 Florida apartment properties, <span class="nw">15-20</span> active subcontractors.</p>
+            </div>
+            <span class="plus" aria-hidden="true">+</span>
+          </div>
+          <ul class="metrics">
+            <li><strong>3</strong> properties on one live dashboard</li>
+            <li><strong><span class="nw">15-20</span></strong> subcontractors tracked by job</li>
+            <li><strong>57</strong> automated tests behind it</li>
+          </ul>
+          <span class="more">Read the case study</span>
+        </summary>
+        <div class="case-body">
+          <h4>The problem</h4>
+          <p>Subcontractor work across three apartment properties was tracked on paper. Nobody had a live view of who was working where, how many hours had been logged, or which jobs were running late.</p>
+
+          <h4>What I built</h4>
+          <p>A full-stack web app, live on Render. Contractors sign in from their phone with a PIN to see their jobs and log daily work. Managers get one dashboard with active jobs, overdue work, hours and labor cost for each property, plus construction projects, tasks and leasing reports that export to Excel. Role-based permissions control who sees what, and automated OneDrive backups protect the data.</p>
+          <figure>
+            <img src="img/tracker-dashboard.jpg" width="1400" height="540" loading="lazy" alt="Manager dashboard showing active jobs, overdue jobs, hours for the last 7 days, total labor cost, and a card for each of three properties." />
+            <figcaption>Manager dashboard, shown with demo data.</figcaption>
+          </figure>
+
+          <h4 class="ok">Results</h4>
+          <ul class="results">
+            <li>One live view across 3 properties in place of the paper system</li>
+            <li>Labor hours and cost rolled up by job and property automatically</li>
+            <li>57 automated tests and automated backups, so it keeps working after handoff</li>
+          </ul>
+          <ul class="stack" aria-label="Stack">
+            <li>Node.js</li><li>Express</li><li>SQLite</li><li>HTMX</li><li>Microsoft Graph</li><li>Twilio</li><li>Render</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section aria-labelledby="how-title">
+      <h2 class="label" id="how-title">How I work</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Find where the hours go first</h3>
+          <p>Before building anything I map the manual work: who does it, how often, and what it costs when it breaks. Then we pick the one fix worth building first.</p>
+        </div>
+        <div class="step">
+          <h3>Shadow mode before live</h3>
+          <p>New automations log what they would have done before they touch a customer or a bookkeeper. The team checks the output and signs off before it goes live.</p>
+        </div>
+        <div class="step">
+          <h3>Built for the team to run</h3>
+          <p>Tests, backups and alarms when the numbers drift, so the system keeps working after I hand it over.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" aria-labelledby="about-title">
+      <h2 class="label" id="about-title">About</h2>
+      <p>I spent 7+ years running businesses before I built software for them. I founded Voge Emergency &amp; Restoration and grew it to $1M+ a year, with 90+ projects and field crews of 5 to 15. Before that I ran the lending division at LS Financing: 550 active accounts, a $4M+ portfolio, $2M+ raised, and underwriting software built on 4 credit bureau APIs.</p>
+      <p>Today I'm Director of Digital Operations &amp; AI (contract) at Everest Realty, the sole technology lead for a 900+ unit multifamily portfolio. I work with the C-suite, property managers and <span class="nw">15-20</span> subcontractors, and I take on AI implementation projects for other operations teams.</p>
+      <p>When I build for a construction or property team, I've usually done the job the software is replacing.</p>
+
+      <h3 class="chips-title">Tools I build with</h3>
+      <ul class="chips mono">
+        <li>Claude API</li><li>MCP</li><li>RAG</li><li>Prompt engineering</li><li>n8n</li><li>HubSpot</li>
+        <li>Node.js</li><li>Express</li><li>Python</li><li>Playwright</li><li>SQLite</li><li>HTMX</li>
+        <li>React</li><li>Firebase</li><li>Microsoft Graph</li><li>Twilio</li><li>Render</li><li>Netlify</li>
+      </ul>
+
+      <h3 class="chips-title">Certifications and education</h3>
+      <ul class="chips">
+        <li>Claude Code in Action (Anthropic)</li><li>MCP Architecture (Anthropic)</li>
+        <li>IICRC WRT</li><li>Florida real estate license</li><li>B.S. Finance, San Diego State</li>
+      </ul>
+
+      <h3 class="chips-title">Industries</h3>
+      <ul class="chips green">
+        <li>Construction</li><li>Restoration</li><li>Property management</li><li>Real estate</li><li>Lending</li>
+      </ul>
+    </section>
+
+    <section class="cta" aria-labelledby="contact-title">
+      <h2 id="contact-title">Hiring for AI implementation, or have a process eating your team's week?</h2>
+      <p>Send me the problem in a few lines. I'll tell you straight whether I'm the right fit and what I'd build first.</p>
+      <div class="actions">
+        <a class="btn btn-blue" href="mailto:lioravram08@gmail.com">Email me</a>
+        <a class="btn btn-li" href="https://www.linkedin.com/in/lioravram" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>&copy; 2026 Lior Avram &middot; Fort Lauderdale, FL</footer>
+  </main>
 </body>
 </html>
